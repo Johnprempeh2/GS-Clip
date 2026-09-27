@@ -51,9 +51,9 @@ jobs:
       - run: pnpm exec playwright install --with-deps --only-shell chromium
       - name: Measure S2 (issue detail and board)
         env:
-          GSAM_ISSUE_PERF_RUNS: "20"
+          PAPERCLIP_ISSUE_PERF_RUNS: "20"
           # ~1 min at n=20 unthrottled; the throttled profile ran 27+ min without finishing, so it is measured on demand.
-          GSAM_ISSUE_PERF_PROFILES: unthrottled
+          PAPERCLIP_ISSUE_PERF_PROFILES: unthrottled
         run: pnpm perf:issue-detail
       - name: Measure task-chat main-thread load
         run: pnpm perf:task-chat

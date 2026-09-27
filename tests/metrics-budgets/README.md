@@ -22,7 +22,7 @@ calibration).
   main-thread load. These are measured on a fresh seeded instance serving the
   built UI (`pnpm build` first), so any machine can reproduce them. They are
   enforced by `.github/workflows/metric-budgets.yml`, which runs the
-  unthrottled profile only (`GSAM_ISSUE_PERF_PROFILES=unthrottled`, n=20).
+  unthrottled profile only (`PAPERCLIP_ISSUE_PERF_PROFILES=unthrottled`, n=20).
   The p95 tail is noisy, so its margin is wide. The median budgets are there
   to catch smaller regressions.
 - **weekly** — R1, R2 and S1. These need a real instance's run history, which

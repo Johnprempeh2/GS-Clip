@@ -80,13 +80,13 @@ const ALL_PROFILES: Profile[] = [
     cpuSlowdownRate: 4,
   },
 ];
-// GSAM_ISSUE_PERF_PROFILES=unthrottled limits a run to named profiles (CI gates unthrottled only).
-const requestedProfiles = process.env.GSAM_ISSUE_PERF_PROFILES?.split(",").map((name) => name.trim()).filter(Boolean);
+// PAPERCLIP_ISSUE_PERF_PROFILES=unthrottled limits a run to named profiles (CI gates unthrottled only).
+const requestedProfiles = process.env.PAPERCLIP_ISSUE_PERF_PROFILES?.split(",").map((name) => name.trim()).filter(Boolean);
 const PROFILES = requestedProfiles?.length
   ? ALL_PROFILES.filter((profile) => requestedProfiles.includes(profile.name))
   : ALL_PROFILES;
 if (requestedProfiles?.length && PROFILES.length !== requestedProfiles.length) {
-  throw new Error(`Unknown GSAM_ISSUE_PERF_PROFILES entry; expected any of ${ALL_PROFILES.map((profile) => profile.name).join(", ")}`);
+  throw new Error(`Unknown PAPERCLIP_ISSUE_PERF_PROFILES entry; expected any of ${ALL_PROFILES.map((profile) => profile.name).join(", ")}`);
 }
 // Each run is three fresh-browser samples (about 1 s each unthrottled, far longer throttled); leave room for seeding.
 const TEST_TIMEOUT_MS = 10 * 60_000 + RUNS * PROFILES.length * 3 * 60_000;
